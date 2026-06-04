@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TreeLearn - Platform Pembelajaran Pohon Interaktif</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="bg-circle-1"></div>
+        <div class="bg-circle-2"></div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L6 8l6 6 6-6-6-6z"/>
+                        <path d="M12 14l-6 6M12 14l6 6M6 20h12"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>TreeLearn</h1>
+                    <p>Platform Pembelajaran Pohon Interaktif</p>
+                </div>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 12h18M3 6h18M3 18h18"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="layout">
+            <aside class="sidebar" id="sidebar">
+                <button class="nav-btn active" data-tab="home" onclick="switchTab('home')">
+                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Beranda
+                </button>
+                <button class="nav-btn" data-tab="materi" onclick="switchTab('materi')">
+                    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                    Materi
+                </button>
+                <button class="nav-btn" data-tab="video" onclick="switchTab('video')">
+                    <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                    Video
+                </button>
+                <button class="nav-btn" data-tab="kuis" onclick="switchTab('kuis')">
+                    <svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+                    Kuis
+                </button>
+                <button class="nav-btn" data-tab="calculator" onclick="switchTab('calculator')">
+                    <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="16" y2="18"/></svg>
+                    Kalkulator
+                </button>
+            </aside>
+
+            <main class="main-content">
+                <!-- Tab Beranda -->
+                <div id="home" class="tab-content active">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <h2 style="font-size: 2.5rem; background: linear-gradient(90deg, #059669 0%, #14b8a6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent;">
+                            Selamat Datang di TreeLearn! 🌳
+                        </h2>
+                        <p style="color: #6b7280; font-size: 1.125rem; margin-top: 1rem;">
+                            Jelajahi dunia struktur data pohon dengan cara yang menyenangkan dan interaktif
+                        </p>
+                    </div>
+
+                    <div class="home-grid">
+                        <div class="feature-card" onclick="switchTab('materi')">
+                            <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                            <h3>Materi Lengkap</h3>
+                            <p>Pelajari konsep pohon, pohon berakar, dan panjang lintasan dengan penjelasan detail</p>
+                        </div>
+
+                        <div class="feature-card" onclick="switchTab('video')">
+                            <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                            <h3>Video Pembelajaran</h3>
+                            <p>Tonton video interaktif untuk memahami konsep dengan lebih mudah</p>
+                        </div>
+
+                        <div class="feature-card" onclick="switchTab('kuis')">
+                            <svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+                            <h3>Kuis Interaktif</h3>
+                            <p>Uji pemahaman Anda dengan kuis yang menantang dan penjelasan lengkap</p>
+                        </div>
+
+                        <div class="feature-card" onclick="switchTab('calculator')">
+                            <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="16" y2="18"/></svg>
+                            <h3>Kalkulator Pohon</h3>
+                            <p>Hitung panjang lintasan, bobot graf, derajat, dan jumlah daun dengan mudah</p>
+                        </div>
+                    </div>
+
+                    <div style="background: linear-gradient(90deg, #10b981 0%, #14b8a6 100%); color: white; padding: 1.5rem; border-radius: 16px; margin-top: 2rem;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: white;">💡 Tahukah Kamu?</h3>
+                        <p>Struktur data pohon digunakan di banyak aplikasi seperti file system komputer, database, dan artificial intelligence!</p>
+                    </div>
+                </div>
+
+                <!-- Tab Materi -->
+                <div id="materi" class="tab-content">
+                    <h2>📚 Materi Pembelajaran</h2>
+                    
+                    <div class="content-section">
+                        <h3>
+                            <span style="color: #10b981;">▸</span> Apa itu Pohon (Tree)?
+                        </h3>
+                        <p style="color: #374151; line-height: 1.8; margin-bottom: 1rem;">
+                            <strong>Pohon</strong> adalah struktur data hierarkis yang terdiri dari simpul (node) yang terhubung dengan sisi (edge). Pohon memiliki satu simpul khusus yang disebut <strong>akar (root)</strong> dan setiap simpul dapat memiliki nol atau lebih simpul anak (child nodes).
+                        </p>
+                        <div class="content-box">
+                            <p style="font-weight: 600; color: #047857; margin-bottom: 0.5rem;">Komponen Pohon:</p>
+                            <ul>
+                                <li><strong>Akar (Root):</strong> Simpul paling atas tanpa parent</li>
+                                <li><strong>Daun (Leaf):</strong> Simpul tanpa anak</li>
+                                <li><strong>Cabang (Branch):</strong> Simpul yang memiliki anak</li>
+                                <li><strong>Subtree:</strong> Pohon yang merupakan bagian dari pohon lebih besar</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-section" style="border-left-color: #14b8a6;">
+                        <h3>
+                            <span style="color: #14b8a6;">▸</span> Pohon Berakar (Rooted Tree)
+                        </h3>
+                        <p style="color: #374151; line-height: 1.8; margin-bottom: 1rem;">
+                            <strong>Pohon berakar</strong> adalah pohon dengan satu simpul yang ditunjuk sebagai akar. Dari akar ini, kita dapat menentukan hubungan parent-child untuk setiap simpul.
+                        </p>
+                        <div class="content-box">
+                            <p style="font-weight: 600; color: #0f766e; margin-bottom: 0.5rem;">Jenis-jenis Pohon Berakar:</p>
+                            <ul>
+                                <li><strong>Pohon Biner:</strong> Setiap simpul maksimal memiliki 2 anak</li>
+                                <li><strong>Pohon Biner Lengkap:</strong> Semua level terisi penuh kecuali mungkin level terakhir</li>
+                                <li><strong>Pohon Biner Pencarian:</strong> Anak kiri lebih kecil dari parent, anak kanan lebih besar dari parent</li>
+                                <li><strong>Pohon N-ary:</strong> Setiap simpul dapat memiliki N anak</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-section" style="border-left-color: #3b82f6;">
+                        <h3>
+                            <span style="color: #3b82f6;">▸</span> Panjang Lintasan pada Pohon
+                        </h3>
+                        <p style="color: #374151; line-height: 1.8; margin-bottom: 1rem;">
+                            <strong>Panjang lintasan (path length)</strong> adalah jumlah sisi yang harus dilalui dari satu simpul ke simpul lain. Konsep ini penting untuk mengukur efisiensi pohon.
+                        </p>
+                        <div class="content-box">
+                            <p style="font-weight: 600; color: #1e40af; margin-bottom: 0.5rem;">Jenis Panjang Lintasan:</p>
+                            <ul>
+                                <li><strong>Kedalaman (Depth):</strong> Panjang lintasan dari akar ke simpul tertentu</li>
+                                <li><strong>Tinggi (Height):</strong> Panjang lintasan terpanjang dari akar ke daun</li>
+                                <li><strong>Level:</strong> Semua simpul dengan kedalaman yang sama</li>
+                            </ul>
+                            <div style="background: #dbeafe; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                                <p style="font-weight: 600; color: #1e40af; margin-bottom: 0.5rem;">Rumus Penting:</p>
+                                <p style="color: #374151;">Tinggi pohon = Level maksimum - 1</p>
+                                <p style="color: #374151;">Total simpul (pohon lengkap) = 2^(h+1) - 1</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section" style="border-left-color: #8b5cf6;">
+                        <h3>
+                            <span style="color: #8b5cf6;">▸</span> Pohon Terentang (Spanning Tree)
+                        </h3>
+                        <p style="color: #374151; line-height: 1.8; margin-bottom: 1rem;">
+                            <strong>Pohon terentang</strong> adalah graf yang diperoleh dengan memutus sirkuit, dengan cara menghilangkan beberapa sisi di dalam graf awal, tanpa mengurangi jumlah simpulnya. Pohon terentang berguna untuk mencari jalur optimal dalam jaringan.
+                        </p>
+                        <div class="content-box">
+                            <p style="font-weight: 600; color: #6b21a8; margin-bottom: 0.5rem;">Karakteristik Pohon Terentang:</p>
+                            <ul>
+                                <li><strong>Terhubung:</strong> Semua simpul tetap terhubung</li>
+                                <li><strong>Tanpa Sirkuit:</strong> Tidak ada jalur tertutup</li>
+                                <li><strong>Minimum Spanning Tree (MST):</strong> Pohon terentang dengan total bobot sisi minimum</li>
+                                <li><strong>Jumlah Sisi:</strong> Untuk n simpul, memiliki tepat n-1 sisi</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-section" style="border-left-color: #ec4899;">
+                        <h3>
+                            <span style="color: #ec4899;">▸</span> Algoritma Prim
+                        </h3>
+                        <p style="color: #374151; line-height: 1.8; margin-bottom: 1rem;">
+                            <strong>Algoritma Prim</strong> merupakan algoritma paling sederhana dalam menyelesaikan masalah minimum spanning tree. Algoritma ini bekerja dengan cara membangun pohon secara bertahap dari satu simpul awal.
+                        </p>
+                        <div class="content-box">
+                            <p style="font-weight: 600; color: #9f1239; margin-bottom: 0.5rem;">Langkah-langkah Algoritma Prim:</p>
+                            <ul>
+                                <li><strong>Langkah 1:</strong> Pilih salah satu titik secara acak yang akan dijadikan sebagai root (akar)</li>
+                                <li><strong>Langkah 2:</strong> Pilih titik selanjutnya yang bertetangga dengan root dengan bobot terkecil</li>
+                                <li><strong>Langkah 3:</strong> Pilih lagi titik yang memiliki bobot terkecil yang bertetangga dengan titik-titik sebelumnya</li>
+                                <li><strong>Syarat:</strong> Tidak terjadi sirkuit pada sisi-sisi yang telah terpilih</li>
+                                <li><strong>Langkah 4:</strong> Ulangi hingga seluruh titik terhubung tanpa membentuk sirkuit</li>
+                            </ul>
+                            <div style="background: #fce7f3; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                                <p style="font-weight: 600; color: #9f1239; margin-bottom: 0.5rem;">💡 Keunggulan Algoritma Prim:</p>
+                                <p style="color: #374151;">• Mudah dipahami dan diimplementasikan</p>
+                                <p style="color: #374151;">• Efisien untuk graf dengan banyak sisi</p>
+                                <p style="color: #374151;">• Kompleksitas waktu: O(E log V)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section" style="border-left-color: #f59e0b;">
+                        <h3>
+                            <span style="color: #f59e0b;">▸</span> Algoritma Kruskal
+                        </h3>
+                        <p style="color: #374151; line-height: 1.8; margin-bottom: 1rem;">
+                            <strong>Algoritma Kruskal</strong> adalah algoritma greedy untuk menemukan minimum spanning tree dengan cara memilih sisi berdasarkan bobot dari yang terkecil ke terbesar.
+                        </p>
+                        <div class="content-box">
+                            <p style="font-weight: 600; color: #92400e; margin-bottom: 0.5rem;">Langkah-langkah Algoritma Kruskal:</p>
+                            <ul>
+                                <li><strong>Langkah 1:</strong> Urutkan semua sisi berdasarkan bobot dari terkecil ke terbesar</li>
+                                <li><strong>Langkah 2:</strong> Pilih sisi dengan bobot terkecil yang belum dipilih</li>
+                                <li><strong>Langkah 3:</strong> Periksa apakah sisi tersebut membentuk sirkuit dengan sisi yang sudah dipilih</li>
+                                <li><strong>Jika Ya:</strong> Buang sisi tersebut dan pilih sisi berikutnya</li>
+                                <li><strong>Jika Tidak:</strong> Tambahkan sisi tersebut ke dalam solusi</li>
+                                <li><strong>Langkah 4:</strong> Ulangi hingga terdapat n-1 sisi (n = jumlah simpul)</li>
+                            </ul>
+                            <div style="background: #fef3c7; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                                <p style="font-weight: 600; color: #92400e; margin-bottom: 0.5rem;">⚡ Keunggulan Algoritma Kruskal:</p>
+                                <p style="color: #374151;">• Sederhana dan mudah diimplementasikan</p>
+                                <p style="color: #374151;">• Efisien untuk graf dengan sedikit sisi</p>
+                                <p style="color: #374151;">• Kompleksitas waktu: O(E log E)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); padding: 1.5rem; border-radius: 12px; margin-top: 1.5rem; border: 2px solid #6366f1;">
+                        <h4 style="color: #3730a3; margin-bottom: 1rem;">🔄 Perbandingan Prim vs Kruskal</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div style="background: white; padding: 1rem; border-radius: 8px;">
+                                <p style="font-weight: 700; color: #ec4899; margin-bottom: 0.5rem;">Algoritma Prim</p>
+                                <p style="color: #374151; font-size: 0.9rem; line-height: 1.6;">
+                                    • Dimulai dari satu simpul<br>
+                                    • Membangun pohon secara bertahap<br>
+                                    • Fokus pada simpul terdekat<br>
+                                    • Lebih baik untuk graf padat
+                                </p>
+                            </div>
+                            <div style="background: white; padding: 1rem; border-radius: 8px;">
+                                <p style="font-weight: 700; color: #f59e0b; margin-bottom: 0.5rem;">Algoritma Kruskal</p>
+                                <p style="color: #374151; font-size: 0.9rem; line-height: 1.6;">
+                                    • Dimulai dari semua sisi<br>
+                                    • Mengurutkan sisi berdasarkan bobot<br>
+                                    • Fokus pada sisi terkecil<br>
+                                    • Lebih baik untuk graf jarang
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Video -->
+                <div id="video" class="tab-content">
+                    <h2>🎥 Video Pembelajaran</h2>
+
+                    <div class="video-container">
+                        <div class="video-header">
+                            <div class="play-icon">
+                                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            </div>
+                            <div>
+                                <h3 style="color: #1e40af; font-size: 1.25rem; margin: 0;">Algoritma Prim</h3>
+                                <p style="color: #6b7280; margin: 0;">Durasi: 15 menit</p>
+                            </div>
+                        </div>
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/1uXRYsTqA1c" title="Tree Data Structure" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <div class="video-container" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);">
+                        <div class="video-header">
+                            <div class="play-icon" style="background: #14b8a6;">
+                                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            </div>
+                            <div>
+                                <h3 style="color: #065f46; font-size: 1.25rem; margin: 0;">Algoritma Kruskal</h3>
+                                <p style="color: #6b7280; margin: 0;">Durasi: 20 menit</p>
+                            </div>
+                        </div>
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/lQpQwbIjAU8" title="Binary Tree" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Kuis -->
+                <div id="kuis" class="tab-content">
+                    <h2>🏆 Kuis Interaktif</h2>
+                    <div id="quizContent"></div>
+                </div>
+
+                <!-- Tab Kalkulator -->
+                <div id="calculator" class="tab-content">
+                    <h2>🧮 Kalkulator Pohon & Graf</h2>
+
+                    <!-- Kalkulator Panjang Lintasan -->
+                    <div class="calculator-form">
+                        <h3 style="color: #7c2d12; margin-bottom: 1rem;">📏 Hitung Total Panjang Lintasan</h3>
+                        <p style="color: #6b7280; margin-bottom: 1.5rem;">Masukkan panjang lintasan dari setiap level (pisahkan dengan koma)</p>
+
+                        <div class="form-group">
+                            <label>Panjang lintasan per level:</label>
+                            <input type="text" id="pathInput" placeholder="Contoh: 0, 2, 4, 6">
+                            <p style="color: #6b7280; font-size: 0.875rem; margin-top: 0.5rem;">💡 Tip: Level 0 (akar) = 0, Level 1 = jumlah simpul di level 1, dst.</p>
+                        </div>
+
+                        <button class="calc-btn" onclick="calculatePath()">Hitung</button>
+                        <div id="calcResult"></div>
+                    </div>
+
+                    <!-- Kalkulator Bobot Graf -->
+                    <div class="calculator-form" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); margin-top: 2rem;">
+                        <h3 style="color: #1e40af; margin-bottom: 1rem;">⚖️ Hitung Bobot Graf</h3>
+                        <p style="color: #6b7280; margin-bottom: 1.5rem;">Masukkan bobot setiap sisi (pisahkan dengan koma)</p>
+
+                        <div class="form-group">
+                            <label style="color: #1e40af;">Bobot setiap sisi:</label>
+                            <input type="text" id="weightInput" placeholder="Contoh: 5, 3, 8, 2, 10">
+                            <p style="color: #6b7280; font-size: 0.875rem; margin-top: 0.5rem;">💡 Tip: Masukkan bobot untuk setiap sisi yang ada di graf</p>
+                        </div>
+
+                        <button class="calc-btn" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);" onclick="calculateGraphWeight()">Hitung</button>
+                        <div id="weightResult"></div>
+                    </div>
+
+                    <!-- Kalkulator Derajat -->
+                    <div class="calculator-form" style="background: linear-gradient(135deg, #e9d5ff 0%, #d8b4fe 100%); margin-top: 2rem;">
+                        <h3 style="color: #6b21a8; margin-bottom: 1rem;">🔢 Hitung Derajat Simpul</h3>
+                        <p style="color: #6b7280; margin-bottom: 1.5rem;">Masukkan derajat setiap simpul (pisahkan dengan koma)</p>
+
+                        <div class="form-group">
+                            <label style="color: #6b21a8;">Derajat setiap simpul:</label>
+                            <input type="text" id="degreeInput" placeholder="Contoh: 2, 3, 1, 4, 2">
+                            <p style="color: #6b7280; font-size: 0.875rem; margin-top: 0.5rem;">💡 Tip: Derajat = jumlah sisi yang terhubung ke simpul tersebut</p>
+                        </div>
+
+                        <button class="calc-btn" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);" onclick="calculateDegreeDepth()">Hitung</button>
+                        <div id="degreeResult"></div>
+                    </div>
+
+                    <!-- Kalkulator Jumlah Daun -->
+                    <div class="calculator-form" style="background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); margin-top: 2rem;">
+                        <h3 style="color: #831843; margin-bottom: 1rem;">🍃 Hitung Jumlah Daun</h3>
+                        <p style="color: #6b7280; margin-bottom: 1.5rem;">Masukkan total simpul dan jumlah simpul internal</p>
+
+                        <div class="form-group">
+                            <label style="color: #831843;">Total jumlah simpul:</label>
+                            <input type="number" id="totalNodes" placeholder="Contoh: 15" min="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label style="color: #831843;">Jumlah simpul internal (bukan daun):</label>
+                            <input type="number" id="internalNodes" placeholder="Contoh: 7" min="0">
+                            <p style="color: #6b7280; font-size: 0.875rem; margin-top: 0.5rem;">💡 Tip: Simpul internal adalah simpul yang memiliki anak</p>
+                        </div>
+
+                        <button class="calc-btn" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);" onclick="calculateLeaves()">Hitung</button>
+                        <div id="leavesResult"></div>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, #fed7aa 0%, #fef3c7 100%); padding: 1.5rem; border-radius: 12px; margin-top: 2rem;">
+                        <h4 style="color: #7c2d12; margin-bottom: 1rem;">📖 Penjelasan Konsep:</h4>
+                        <div style="color: #374151; line-height: 1.8;">
+                            <p style="margin-bottom: 0.75rem;"><strong>• Panjang Lintasan:</strong> Jumlah sisi dari akar ke setiap simpul</p>
+                            <p style="margin-bottom: 0.75rem;"><strong>• Bobot Graf:</strong> Total nilai/bobot dari semua sisi dalam graf</p>
+                            <p style="margin-bottom: 0.75rem;"><strong>• Derajat Simpul:</strong> Jumlah sisi yang terhubung ke simpul</p>
+                            <p><strong>• Jumlah Daun:</strong> Simpul yang tidak memiliki anak (simpul terminal)</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        
+    </div>
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>TreeLearn</h4>
+                <p style="color: #d1fae5; font-size: 0.875rem;">Platform pembelajaran interaktif untuk memahami struktur data pohon dengan cara yang menyenangkan.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Fitur</h4>
+                <ul>
+                    <li>✓ Materi lengkap dan terstruktur</li>
+                    <li>✓ Video pembelajaran interaktif</li>
+                    <li>✓ Kuis untuk menguji pemahaman</li>
+                    <li>✓ 4 Kalkulator lengkap</li>
+                    <li>✓ AI Chatbot Asisten</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Tips Belajar</h4>
+                <ul>
+                    <li>🌟 Mulai dari materi dasar</li>
+                    <li>🎥 Tonton video dengan seksama</li>
+                    <li>📝 Coba kuis setelah belajar</li>
+                    <li>🧮 Praktikkan dengan kalkulator</li>
+                    <li>🤖 Tanya AI jika ada yang kurang jelas</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 TreeLearn - Platform Pembelajaran Pohon Interaktif</p>
+            <p style="margin-top: 0.5rem; color: #d1fae5;">Belajar Struktur Data dengan Cara yang Menyenangkan! 🌳</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot Float Button -->
+    <button class="chatbot-float-btn" onclick="toggleChatbot()" aria-label="Buka Chatbot">
+        <svg viewBox="0 0 24 24">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+    </button>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbot-container">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <div class="chatbot-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L6 8l6 6 6-6-6-6z"/>
+                        <path d="M12 14l-6 6M12 14l6 6M6 20h12"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3>TreeLearn AI</h3>
+                    <p>Asisten Pembelajaran</p>
+                </div>
+            </div>
+            <div class="chatbot-actions">
+                <button class="chatbot-btn" onclick="clearChat()" title="Hapus Chat">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="3 6 5 6 21 6"/>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                    </svg>
+                </button>
+                <button class="chatbot-btn" onclick="toggleChatbot()" title="Tutup">
+                    <svg viewBox="0 0 24 24">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="chat-messages" id="chat-messages"></div>
+
+        <div class="chat-input-area">
+            <div class="chat-input-wrapper">
+                <textarea 
+                    id="user-input" 
+                    placeholder="Tanya tentang struktur data pohon..."
+                    rows="1"
+                ></textarea>
+                <button id="send-button" title="Kirim">
+                    <svg viewBox="0 0 24 24">
+                        <line x1="22" y1="2" x2="11" y2="13"/>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
